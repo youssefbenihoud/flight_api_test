@@ -23,17 +23,16 @@ public class EmailUtil {
         Properties props = System.getProperties();
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", host);
-        props.put("mail.smtp.user", "jakja832@gmail.com");
-        props.put("mail.smtp.password", "z0shamza");
+        props.put("mail.smtp.user", "XXXX@gmail.com");
+        props.put("mail.smtp.password", "PASSWORD");
         props.put("mail.smtp.port", 587);
         props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
         props.put("mail.smtp.connectiontimeout", 10000);
         props.put("mail.smtp.auth", "true");
         Session session = Session.getDefaultInstance(props, null);
         MimeMessage mimeMessage = new MimeMessage(session);
-//"gotodocproject@gmail.com", "$$gotodoc$$", message, to, subject
         try {
-            mimeMessage.setFrom(new InternetAddress("jakja832@gmail.com"));
+            mimeMessage.setFrom(new InternetAddress("XXXXX@gmail.com"));
 //            InternetAddress[] toAdress=new InternetAddress[to.length];
 //            for(int i=0;i<toAdress.length;i++){
             System.out.println("=== emailUtil ===");
@@ -43,7 +42,7 @@ public class EmailUtil {
             mimeMessage.setText(message, "UTF-8", "html");
             System.out.println("=== Content === <br/> " + mimeMessage.getContent());
             Transport transport = session.getTransport("smtp");
-            transport.connect(host,"jakja832@gmail.com","z0shamza");
+            transport.connect(host,"XXXXX@gmail.com","PASSWORD");
             transport.sendMessage(mimeMessage, mimeMessage.getAllRecipients());
             transport.close();
             return true;
