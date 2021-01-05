@@ -34,6 +34,13 @@ public class DepartAirportServiceImpl implements DepartAirportService {
 		return departAirportDao.findByFlight(flight).getAirport();
 	}
 
+	
+	
+	
+	
+	
+	
+	
 	public DepartAirportDao getDepartAirportDao() {
 		return departAirportDao;
 	}

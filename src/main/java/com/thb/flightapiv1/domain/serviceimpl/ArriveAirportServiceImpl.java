@@ -20,7 +20,8 @@ public class ArriveAirportServiceImpl implements ArriveAirportService {
 	public ArriveAirport save(String flight, String airport) {
 		// TODO Auto-generated method stub
 		ArriveAirport arriveAirport = arriveAirportDao.findByFlight(flight);
-		System.out.print("arriveAirport == "+arriveAirport);
+		
+		
 		if(arriveAirport == null) {
 			arriveAirport = new ArriveAirport();
 		}
@@ -39,6 +40,14 @@ public class ArriveAirportServiceImpl implements ArriveAirportService {
 	}
 
 
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public ArriveAirportDao getArriveAirportDao() {
 		return arriveAirportDao;
