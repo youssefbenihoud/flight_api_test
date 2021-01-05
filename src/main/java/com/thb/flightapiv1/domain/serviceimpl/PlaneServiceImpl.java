@@ -1,11 +1,14 @@
 package com.thb.flightapiv1.domain.serviceimpl;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.thb.flightapiv1.domain.bean.Plane;
 import com.thb.flightapiv1.domain.dao.PlaneDao;
 import com.thb.flightapiv1.domain.service.PlaneService;
+import com.thb.flightapiv1.util.EmailUtil;
 
 
 @Service
@@ -35,6 +38,16 @@ public class PlaneServiceImpl implements PlaneService{
 		}
 		
 		return plane;
+	}
+	
+	
+	public void sendNotfallEmail() {
+		try {
+			EmailUtil.sendMail("Test Message", "benihoud@mail.uni-paderborn.de", "Test Subject");
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public PlaneDao getPlaneDao() {
