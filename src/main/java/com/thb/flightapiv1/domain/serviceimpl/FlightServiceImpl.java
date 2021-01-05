@@ -117,7 +117,7 @@ public class FlightServiceImpl implements FlightService {
 		 JSONObject json;
 		try {
 			json = JSONHelper.readJsonFromUrl
-					("https://data-live.flightradar24.com/zones/fcgi/feed.js?bounds=52.65,52.10,12.99,13.83&faa=1&satellite=1&mlat=1&flarm=1&adsb=1&gnd=1&air=1&vehicles=1&estimated=1&maxage=14400&gliders=1");
+					("https://data-live.flightradar24.com/zones/fcgi/feed.js?bounds=53.23,51.68,8.00,16.55&faa=1&satellite=1&mlat=1&flarm=1&adsb=1&gnd=1&air=1&vehicles=1&estimated=1&maxage=14400&gliders=1");
 		
 	    
 	    JSONArray jsonDatas = json.names();
@@ -128,10 +128,14 @@ public class FlightServiceImpl implements FlightService {
 	    	if(!flightId.startsWith("f") && !flightId.startsWith("v")) {
 	    		
 	    		infos = getParam(json, flightId);
-	    		//TODO: if condition Flights whose ArriveAirport is Berlin
-	    		// geoService.getLand(infos.get(JsonIndex.Latitude.getName(),
-	    		// 				infos.get(JsonIndex.Longitude.getName());
-	    		saveDataInDB(infos);
+	    		String land = geoService.getLand(infos.get(JsonIndex.Latitude.getName()), 
+	    				infos.get(JsonIndex.Longitude.getName()));	
+	    		
+	    		if(land.contentEquals("Brandenburg")) {
+	    			saveDataInDB(infos);
+	    		}
+	    		
+	    		
 	    		infos.clear();
 	    		
 	    			
