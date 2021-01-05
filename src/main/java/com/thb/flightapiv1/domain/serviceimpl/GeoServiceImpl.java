@@ -1,11 +1,14 @@
 package com.thb.flightapiv1.domain.serviceimpl;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.thb.flightapiv1.domain.bean.Flight;
 import com.thb.flightapiv1.domain.bean.Geo;
 import com.thb.flightapiv1.domain.dao.GeoDao;
+import com.thb.flightapiv1.domain.helper.JSONHelper;
 import com.thb.flightapiv1.domain.service.GeoService;
 
 
@@ -34,6 +37,45 @@ public class GeoServiceImpl implements GeoService{
 		
 		return geo;
 	}
+	
+	
+	public String getLand(String lat, String lng) {
+		JSONObject jsonObject;
+		Geo geo = new Geo();
+		String region = "NONE";
+		geo.setLatitude(lat);
+		geo.setLongitude(lng);
+		
+		try {
+			jsonObject = JSONHelper.readJsonFromUrl("http://api.geonames.org/countrySubdivisionJSON?lat="
+		+geo.getLatitude()+"&lng="+geo.getLongitude()+"&username=free");
+			
+			
+			//System.out.print(jsonObject);
+			
+			region = jsonObject.getString("adminName1");
+			
+			System.out.print("Region === "+region);
+			
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.print("e message "+e);
+		}
+		
+		return region;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public GeoDao getGeoDao() {
 		return geoDao;

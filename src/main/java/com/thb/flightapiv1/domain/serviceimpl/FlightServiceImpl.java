@@ -128,7 +128,9 @@ public class FlightServiceImpl implements FlightService {
 	    	if(!flightId.startsWith("f") && !flightId.startsWith("v")) {
 	    		
 	    		infos = getParam(json, flightId);
-	    		//TODO: if condition Flights whose ArriveAirport is Berlin 
+	    		//TODO: if condition Flights whose ArriveAirport is Berlin
+	    		// geoService.getLand(infos.get(JsonIndex.Latitude.getName(),
+	    		// 				infos.get(JsonIndex.Longitude.getName());
 	    		saveDataInDB(infos);
 	    		infos.clear();
 	    		
@@ -150,6 +152,7 @@ public class FlightServiceImpl implements FlightService {
 	
 	
 	public void saveDataInDB(HashMap<String, String> datas) {
+		
 		
 		Airport departAirport = airportService.save(datas.get(JsonIndex.DepartAirport.getName()));
 		Airport arriveAirport = airportService.save(datas.get(JsonIndex.ArriveAirport.getName()));
