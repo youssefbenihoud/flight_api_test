@@ -41,17 +41,13 @@ public class GeoServiceImpl implements GeoService{
 	@Override
 	public String getLand(String lat, String lng) {
 		JSONObject jsonObject;
-		Geo geo = new Geo();
 		String region = "NONE";
-		geo.setLatitude(lat);
-		geo.setLongitude(lng);
+		
 		
 		try {
 			jsonObject = JSONHelper.readJsonFromUrl("http://api.geonames.org/countrySubdivisionJSON?lat="
-		+geo.getLatitude()+"&lng="+geo.getLongitude()+"&username=free");
+		+lat+"&lng="+lng+"&username=free");
 			
-			
-			//System.out.print(jsonObject);
 			
 			region = jsonObject.getString("adminName1");
 			
