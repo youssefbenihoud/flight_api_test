@@ -21,7 +21,7 @@ class GeoServiceImplTest {
 		Geo geo = new Geo();
 		geo.setLatitude("52.3904");
 		geo.setLongitude("13.5210");
-		geoServiceImpl.getLand(geo);
+		geoServiceImpl.getLand(geo.getLatitude(),geo.getLongitude());
 		
 	}
 

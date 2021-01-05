@@ -38,7 +38,7 @@ public class GeoServiceImpl implements GeoService{
 		return geo;
 	}
 	
-	
+	@Override
 	public String getLand(String lat, String lng) {
 		JSONObject jsonObject;
 		Geo geo = new Geo();
