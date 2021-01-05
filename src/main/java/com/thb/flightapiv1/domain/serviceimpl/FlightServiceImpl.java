@@ -128,50 +128,10 @@ public class FlightServiceImpl implements FlightService {
 	    	if(!flightId.startsWith("f") && !flightId.startsWith("v")) {
 	    		
 	    		infos = getParam(json, flightId);
-	    		
-	    		
-	    		/*
-	    		JSONArray flightDatas = json.getJSONArray(flightId);
-	    		//Get Data from JSONFeed
-	    		String squawk = flightDatas.get(JsonIndex.Squawk.getIndex()).toString();
-	    		String airline = flightDatas.get(JsonIndex.Airline.getIndex()).toString();
-	    		String hexcode = flightDatas.get(JsonIndex.Hexcode.getIndex()).toString();
-	    		String manufacturer = flightDatas.get(JsonIndex.Manifacturer.getIndex()).toString();
-	    		String latitude = flightDatas.get(JsonIndex.Latitude.getIndex()).toString();
-	    		String longitude = flightDatas.get(JsonIndex.Longitude.getIndex()).toString();
-	    		String arriveAirportShortcut = flightDatas.get(JsonIndex.ArriveAirport.getIndex()).toString();
-	    		String departAirportShortcut = flightDatas.get(JsonIndex.DepartAirport.getIndex()).toString();
-	    		
-	    		infos.put("squawk", squawk);
-	    		infos.put("airline", airline);
-	    		infos.put("hexcode", hexcode);
-	    		infos.put("manufacturer", manufacturer);
-	    		infos.put("latitude", latitude);
-	    		infos.put("longitude", longitude);
-	    		infos.put("arriveAirportShortcut", arriveAirportShortcut);
-	    		infos.put("departAirportShortcut", departAirportShortcut);
-	    		infos.put("flightId", flightId);
-	    		*/
 	    		//TODO: if condition Flights whose ArriveAirport is Berlin 
 	    		saveDataInDB(infos);
-	    		//Save Airports
-	    		/*Airport departAirport = airportService.save(departAirportShortcut);
-	    		Airport arriveAirport = airportService.save(arriveAirportShortcut);
-	    		
-	    		//Save Plane
-	    		Plane plane = planeService.save(hexcode, manufacturer, airline);;
-	    		
-	    		
-	    		// Save Flight
-	    		Flight flight = save(flightId, squawk, plane);
-	    		
-	    		//Save Geo
-	    		geoService.save(Longitude, Latitude, flight);
-	    		
-	    		//Save Depart/Arrive Airport
-	    		aas.save(flight.getFlightCode(), arriveAirport.getShortcut());
-	    		das.save(flight.getFlightCode(), departAirport.getShortcut());*/
 	    		infos.clear();
+	    		
 	    			
 	    	} // if
 	    	
