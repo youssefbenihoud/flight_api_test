@@ -43,7 +43,7 @@ public class PlaneServiceImpl implements PlaneService{
 	
 	public void sendNotfallEmail() {
 		try {
-			EmailUtil.sendMail("Test Message", "benihoud@mail.uni-paderborn.de", "Test Subject");
+			EmailUtil.sendMail("Test Message", "EmailToSend", "Test Subject");
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
