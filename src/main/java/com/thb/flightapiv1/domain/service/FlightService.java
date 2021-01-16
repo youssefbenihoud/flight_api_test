@@ -8,7 +8,7 @@ public interface FlightService {
 	
 	public void saveFlight(Flight flight);
 	
-	public Flight save(String flightId, String squawk, Plane plane);
+	public Flight save(String flightId, String serial, String squawk, Plane plane);
 	
 	public void getJSONDaten();
 }

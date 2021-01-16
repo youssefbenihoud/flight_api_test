@@ -17,6 +17,7 @@ public class Flight {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	private String serial;
 	private String flightCode;
 	private String squawk;
 	@OneToMany(mappedBy = "flight")
@@ -44,6 +45,8 @@ public class Flight {
 		return flightCode;
 	}
 	public void setFlightCode(String flightCode) {
+		if(flightCode.isEmpty())
+			flightCode = "Unknown";
 		this.flightCode = flightCode;
 	}
 	public String getSquawk() {
@@ -63,6 +66,12 @@ public class Flight {
 	}
 	public void setPlane(Plane plane) {
 		this.plane = plane;
+	}
+	public String getSerial() {
+		return serial;
+	}
+	public void setSerial(String serial) {
+		this.serial = serial;
 	}
 	
 	

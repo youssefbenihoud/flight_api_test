@@ -56,14 +56,15 @@ public class FlightServiceImpl implements FlightService {
 	
 	
 	@Override
-	public Flight save(String flightId, String squawk, Plane plane) {
+	public Flight save(String flightCode, String serial, String squawk, Plane plane) {
 		// TODO Auto-generated method stub
-		Flight flight = flightDao.findByFlightCode(flightId);
+		Flight flight = flightDao.findByFlightCode(flightCode);
 		
 		
 		if(flight == null) {
 		flight = new Flight();
-		flight.setFlightCode(flightId);
+		flight.setFlightCode(flightCode);
+		flight.setSerial(serial);
 		}
 		
 		flight.setSquawk(squawk);
@@ -89,7 +90,7 @@ public class FlightServiceImpl implements FlightService {
 	    		String longitude = flightDatas.get(JsonIndex.Longitude.getIndex()).toString();
 	    		String arriveAirportShortcut = flightDatas.get(JsonIndex.ArriveAirport.getIndex()).toString();
 	    		String departAirportShortcut = flightDatas.get(JsonIndex.DepartAirport.getIndex()).toString();
-	    		
+	    		String flightCode = flightDatas.getString(JsonIndex.FlightCode.getIndex()).toString();
 	    		
 	    		infos.put(JsonIndex.Squawk.getName(), squawk);
 	    		infos.put(JsonIndex.Airline.getName(), airline);
@@ -100,6 +101,7 @@ public class FlightServiceImpl implements FlightService {
 	    		infos.put(JsonIndex.DepartAirport.getName(), departAirportShortcut);
 	    		infos.put(JsonIndex.ArriveAirport.getName(), arriveAirportShortcut);
 	    		infos.put(JsonIndex.FlightId.getName(), flightId);
+	    		infos.put(JsonIndex.FlightCode.getName(), flightCode);
 	    
 	    		
 		
@@ -167,7 +169,7 @@ public class FlightServiceImpl implements FlightService {
 		
 		
 		// Save Flight
-		Flight flight = save(datas.get(JsonIndex.FlightId.getName()), 
+		Flight flight = save(datas.get(JsonIndex.FlightCode.getName()), datas.get(JsonIndex.FlightId.getName()), 
 				datas.get(JsonIndex.Squawk.getName()), plane);
 		
 		//Save Geo
